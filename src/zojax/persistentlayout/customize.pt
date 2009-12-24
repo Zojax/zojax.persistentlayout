@@ -1,0 +1,22 @@
+<div i18n:domain="zojax.persistentlayout">
+  <div class="z-form-fieldset" tal:define="info view/layoutInfo">
+    <h3>
+      <tal:block tal:condition="info/title" tal:content="info/title" />
+      <tal:block tal:condition="not:info/title"
+		 i18n:translate="">No name</tal:block>
+    </h3>
+    <div class="z-page-description">
+      <tal:i18n i18n:translate="">view:</tal:i18n>
+      <tal:block content="nocall:info/view" /><br />
+      <tal:i18n i18n:translate="">context:</tal:i18n>
+      <tal:block content="nocall:info/context" /><br />
+      <tal:i18n i18n:translate="">layer:</tal:i18n>
+      <tal:block content="nocall:info/layer" /><br />
+    </div>
+  </div>
+  
+  <div class="statusStopMessage" tal:condition="context/__parent__/errors">
+    <tal:i18n i18n:translate="">Compilation failed:</tal:i18n> <tal:block tal:content="python:context.errors[0]" /><br />
+    <tal:block tal:on-error="nothing" tal:content="python:str(context.errors[1])" />
+  </div>
+</div>

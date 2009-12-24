@@ -1,0 +1,111 @@
+=======
+CHANGES
+=======
+
+
+1.2.6 (2009-06-23)
+------------------
+
+- Do not use z3c.autoinclude
+
+- Copyright changed to 'Zope Foundation and Contributors'
+
+
+1.2.5 (2009-03-17)
+------------------
+
+- Fix extension view
+
+
+1.2.4 (2009-01-09)
+------------------
+
+- Update tests
+
+
+1.2.3 (2008-12-22)
+------------------
+
+- Use new pagelet api
+
+
+1.2.2 (2008-12-18)
+------------------
+
+- Use zojax:pagelet instead of browser:page for all views
+
+
+1.2.1 (2008-12-01)
+------------------
+
+- Fixed tests tear down for zope3.4
+
+
+1.2.0 (2008-11-27)
+------------------
+
+- Allow customize lyaouts only if layout has uid
+  zojax.layout >= 1.6.0
+
+
+1.1.0 (2008-11-20)
+------------------
+
+- Updated templates to new styles
+
+- Added russian trucnslation
+
+
+1.0.0 (2008-10-10)
+------------------
+
+- Update i18n
+
+- Tests added
+
+
+0.3 (2008-03-17)
+----------------
+
+- Use new extensions api
+
+- Use z3c.autoinclude
+
+
+0.2.1 (2008-02-20)
+------------------
+
+- Use zojax.layoutform
+
+
+0.2 (2008-02-14)
+------------------
+
+- Move all code for customization from zojax.layout
+  to zojax.persistentlayout
+  
+- Show page template compilation error
+
+
+0.1.3 (2008-02-12)
+------------------
+
+- Log page template errors
+
+
+0.1.2 (2008-02-11)
+------------------
+
+- Added '++nolayout++' namespace, it prevents usage of customized layouts
+
+
+0.1.1 (2008-02-08)
+------------------
+
+- Fixed 'Unauthorized' exception in edit form
+
+
+0.1.0 (2008-02-07)
+------------------
+
+- Initial release
