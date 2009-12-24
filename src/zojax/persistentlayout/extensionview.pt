@@ -1,0 +1,69 @@
+<tal:block i18n:domain="zojax.persistentlayout">
+  <tal:block tal:define="layouts view/customized" tal:condition="layouts">
+    <div class="z-page">
+      <h1 i18n:translate="">Customized layouts</h1>
+
+      <form action="index.html" method="post">
+	<ul class="z-listing z-frame">
+	  <li tal:repeat="layout layouts">
+	    <div class="z-listing-icon">
+	      <input type="checkbox" name="layoutId"
+		     tal:attributes="value layout/id" />
+	    </div>
+	    <div class="z-listing-details">
+	      <a tal:attributes="href string:${layout/id}/">
+		<tal:block tal:condition="layout/title">
+		  <tal:block tal:content="layout/title" />
+		</tal:block>
+		<tal:block tal:condition="not:layout/title">
+		  <tal:block i18n:translate="">Layout:</tal:block>
+		  name="<tal:block content="python:layout.get('name') or 'no name'" />",
+		  id="<tal:block content="layout/id" />"
+		</tal:block>
+	      </a>
+	      <div tal:content="layout/description" 
+		   tal:condition="layout/description"></div>
+	      <div>
+		view: <tal:block content="nocall:layout/view" /><br />
+		context: <tal:block content="nocall:layout/context" /><br />
+		layer: <tal:block content="nocall:layout/layer" /><br />
+	      </div>
+	    </div>
+	  </li>
+	</ul>
+	
+	<div class="z-form-controls">
+	  <hr />
+	  <input type="submit" class="z-form-button" i18n:attributes="value"
+		 name="form.button.remove" value="Remove" />
+	</div>
+      </form>
+    </div>
+    <br />
+  </tal:block>
+
+  <div class="z-page" tal:define="layouts view/layouts" tal:condition="layouts">
+    <h1 i18n:translate="">Layouts</h1>
+    <ul class="z-listing">
+      <li tal:repeat="layout layouts">
+	<div class="z-listing-details z-frame">
+	  <a tal:attributes="href string:@@preview.html?layoutId=${layout/id}">
+	    <tal:block tal:condition="layout/title"
+		       tal:content="layout/title" />
+	    <tal:block tal:condition="not:layout/title">
+	      No name
+	    </tal:block>
+	  </a>
+	  <div tal:content="layout/description" 
+	       tal:condition="layout/description"></div>
+	  <div>
+	    view: <tal:block content="nocall:layout/view" /><br />
+	    context: <tal:block content="nocall:layout/context" /><br />
+	    layer: <tal:block content="nocall:layout/layer" /><br />
+	  </div>
+	</div>
+      </li>
+    </ul>
+    <div class="visualClear"></div>
+  </div>
+</tal:block>

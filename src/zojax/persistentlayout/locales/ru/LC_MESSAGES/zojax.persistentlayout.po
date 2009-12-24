@@ -1,0 +1,106 @@
+##############################################################################
+#
+# Copyright (c) 2009 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Thu Nov 20 23:19:26 2008\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Nikolay Kim <fafhrd91@gmail.com>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/persistentlayout/configure.zcml:12
+msgid "Manage layouts"
+msgstr "Управление layout'ами"
+
+#: src/zojax/persistentlayout/configure.zcml:17
+msgid "Custom layouts"
+msgstr ""
+
+#: src/zojax/persistentlayout/configure.zcml:17
+msgid "Persistent layouts management."
+msgstr ""
+
+#: src/zojax/persistentlayout/customize.pt:14
+msgid "view:"
+msgstr ""
+
+#: src/zojax/persistentlayout/customize.pt:16
+msgid "context:"
+msgstr ""
+
+#: src/zojax/persistentlayout/customize.pt:18
+msgid "layer:"
+msgstr ""
+
+#: src/zojax/persistentlayout/customize.pt:24
+msgid "Compilation failed:"
+msgstr ""
+
+#: src/zojax/persistentlayout/customize.pt:8
+#: src/zojax/persistentlayout/extensionview.pt:20
+msgid "Layout:"
+msgstr ""
+
+#: src/zojax/persistentlayout/customize.py:55
+msgid "No name"
+msgstr "Без имени"
+
+#: src/zojax/persistentlayout/extensionview.pt:37
+msgid "Remove"
+msgstr "Удалить"
+
+#: src/zojax/persistentlayout/extensionview.pt:4
+msgid "Customized layouts"
+msgstr ""
+
+#: src/zojax/persistentlayout/extensionview.pt:46
+msgid "Layouts"
+msgstr ""
+
+#: src/zojax/persistentlayout/interfaces.py:42
+msgid "Enabled"
+msgstr "Включить"
+
+#: src/zojax/persistentlayout/interfaces.py:46
+msgid "Source"
+msgstr "Исходный код"
+
+#: src/zojax/persistentlayout/interfaces.py:47
+msgid "The source of the layout page template."
+msgstr "Исходный код страницы."
+
+#: src/zojax/persistentlayout/preview.pt:25
+msgid "Customize"
+msgstr ""
+
+#: src/zojax/persistentlayout/preview.pt:27
+msgid "Back"
+msgstr "Назад"
+
+#: src/zojax/persistentlayout/preview.py:54
+msgid "Layout already customized."
+msgstr ""
+
+#: src/zojax/persistentlayout/preview.py:60
+msgid "Can't find layout."
+msgstr ""
+
+#: src/zojax/persistentlayout/preview.py:69
+msgid "Layout has been customized."
+msgstr ""
+

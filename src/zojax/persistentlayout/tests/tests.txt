@@ -1,0 +1,122 @@
+=================
+Persistent Layout
+=================
+
+    >>> from zope import component, interface
+    >>> from zope.testbrowser.testing import Browser
+    >>> from zope.app.testing.functional import getRootFolder
+    >>> from zope.app.component.hooks import setSite
+    >>> from zojax.extensions.interfaces import IExtensible
+    >>> from zojax.persistentlayout.interfaces import IPersistentLayoutExtension
+
+    >>> root = getRootFolder()
+    >>> interface.alsoProvides(root, IExtensible)
+    >>> setSite(root)
+
+Let's render default portal layout
+
+    >>> user = Browser()
+    >>> user.handleErrors = False
+    >>> user.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> user.open("http://localhost/test.html")
+    >>> print user.contents
+    <!DOCTYPE html PUBLIC...
+    ...
+    <div id="z-portal-workspace"><div id="z-portal-viewspace"><div id="z-content"><div>zope.mgr</div>
+    ...
+    </html>
+
+Let's create persistent layout
+
+    >>> admin = Browser()
+    >>> admin.handleErrors = False
+    >>> admin.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> admin.open("http://localhost/++extensions++/")
+
+    >>> admin.getLink('Custom layouts').click()
+    >>> print admin.contents
+    <!DOCTYPE html PUBLIC...
+    ...
+    <h1>Custom layouts</h1>
+    <div class="z-page-description">Persistent layouts management.</div>
+    ...
+    <div class="z-listing-details z-frame">
+       <a href="@@preview.html?layoutId=default.viewspace">
+    	  Viewspace
+       </a>
+       <div>Default viewpsace layout, registered for IDefaultBrowserLayer.</div>
+       <div>
+          view: <br />
+          context: &lt;class 'zope...site.SiteManagerContainer'&gt;<br />
+          layer: &lt;InterfaceClass zope.publisher.interfaces.browser.IDefaultBrowserLayer&gt;<br />
+       </div>
+    </div>
+    ...
+    </html>
+
+    >>> admin.getLink(url='@@preview.html?layoutId=default.viewspace').click()
+    >>> print admin.contents
+    <!DOCTYPE html PUBLIC...
+    ...
+    <h1>
+        Viewspace
+    </h1>
+    <div class="z-page-description">
+      view: <br />
+      context: &lt;class 'zope...site.SiteManagerContainer'&gt;<br />
+      layer: &lt;InterfaceClass zope.publisher.interfaces.browser.IDefaultBrowserLayer&gt;<br />
+    </div>
+    <pre>&lt;div id="z-portal-viewspace" tal:content="structure view/render"&gt;&lt;/div&gt;
+    </pre>
+    ...
+    </html>
+
+Customize
+
+    >>> admin.getControl(name="form.customize").click()
+    >>> admin.getControl('Source').value = """
+    ... <h1>Customized portal layout</h1>
+    ... <div id="z-portal-viewspace" tal:content="structure view/render"></div>"""
+    >>> admin.getControl(name="form.buttons.save").click()
+
+View use new layout
+
+    >>> user.reload()
+    >>> '<h1>Customized portal layout</h1>' in user.contents
+    True
+
+disable layout
+
+    >>> user.open("http://localhost/++nolayout++/test.html")
+    >>> '<h1>Customized portal layout</h1>' in user.contents
+    False
+
+if we disable layouts we will need enable layotus again to use them
+
+    >>> user.open("http://localhost/test.html")
+    >>> '<h1>Customized portal layout</h1>' in user.contents
+    False
+
+
+enable layout
+
+    >>> user.open("http://localhost/++layout++/test.html")
+    >>> '<h1>Customized portal layout</h1>' in user.contents
+    True
+
+    >>> user.open("http://localhost/test.html")
+    >>> '<h1>Customized portal layout</h1>' in user.contents
+    True
+
+
+Remove layout
+
+    >>> admin.getLink('Custom layouts').click()
+    >>> admin.getControl(name="layoutId").value = 'default.viewspace'
+    >>> admin.getControl(name="form.button.remove").click()
+
+    >>> user.reload()
+    >>> '<h1>Customized portal layout</h1>' in user.contents
+    False
+
+    >>> setSite(None)

@@ -1,0 +1,26 @@
+<div class="z-frame" tal:define="info view/layoutInfo"
+     i18n:domain="zojax.persistentlayout">
+  <h1>
+    <tal:block tal:condition="info/title" tal:content="info/title" />
+    <tal:block tal:condition="not:info/title"
+	       i18n:translate="">No name</tal:block>
+  </h1>
+  <div class="z-page-description">
+    view: <tal:block content="nocall:info/view" /><br />
+    context: <tal:block content="nocall:info/context" /><br />
+    layer: <tal:block content="nocall:info/layer" /><br />
+  </div>
+
+  <pre tal:condition="nocall:info/template"
+       tal:content="info/template/body"></pre>
+
+  <form action="preview.html" method="post">
+    <input type="hidden" name="layoutId" tal:attributes="value request/layoutId" />
+    <div class="z-form-controls">
+      <input type="submit" class="z-form-button" 
+	     name="form.customize" value="Customize" i18n:attributes="value" />
+      <input type="submit" class="z-form-standalonebtn"
+	     name="form.back" value="Back" i18n:attributes="value" />
+    </div>
+  </form>
+</div>
